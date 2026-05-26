@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 import {
   Upload,
@@ -48,8 +48,8 @@ export default function ImageAnalysis() {
 
       formData.append("file", imageFile);
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/analysis/predict",
+      const response = await api.post(
+          "/analysis/predict",
         formData,
         {
           headers: {

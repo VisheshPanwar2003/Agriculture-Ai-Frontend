@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-import axios from "axios";
+import api from "../services/api";
 
 import ReactMarkdown from "react-markdown";
 
@@ -85,9 +85,9 @@ export default function Chatbot() {
       // LOAD HISTORY
 
       const historyRes =
-        await axios.get(
+        await api.get(
 
-          "http://127.0.0.1:8000/chatbot/history",
+          "/chatbot/history",
 
           authHeaders
         );
@@ -99,9 +99,9 @@ export default function Chatbot() {
       // CREATE NEW CHAT
 
       const newChatRes =
-        await axios.post(
+        await api.post(
 
-          "http://127.0.0.1:8000/chatbot/new",
+          "/chatbot/new",
 
           {},
 
@@ -160,9 +160,9 @@ export default function Chatbot() {
       setLoading(true);
 
       const response =
-        await axios.post(
+        await api.post(
 
-          "http://127.0.0.1:8000/chatbot/chat",
+          "/chatbot/chat",
 
           {
 
@@ -190,9 +190,9 @@ export default function Chatbot() {
       // REFRESH SIDEBAR
 
       const historyRes =
-        await axios.get(
+        await api.get(
 
-          "http://127.0.0.1:8000/chatbot/history",
+          "/chatbot/history",
 
           authHeaders
         );
@@ -230,9 +230,9 @@ export default function Chatbot() {
     try {
 
       const response =
-        await axios.get(
+        await api.get(
 
-          `http://127.0.0.1:8000/chatbot/${selectedChatId}`,
+          `/chatbot/${selectedChatId}`,
 
           authHeaders
         );
@@ -259,9 +259,9 @@ export default function Chatbot() {
       try {
 
         const response =
-          await axios.post(
+          await api.post(
 
-            "http://127.0.0.1:8000/chatbot/new",
+            "/chatbot/new",
 
             {},
 
@@ -282,9 +282,9 @@ export default function Chatbot() {
         ]);
 
         const historyRes =
-          await axios.get(
+          await api.get(
 
-            "http://127.0.0.1:8000/chatbot/history",
+            "/chatbot/history",
 
             authHeaders
           );

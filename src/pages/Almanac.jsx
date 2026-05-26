@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import axios from "axios";
+import api from "../services/api";
 
 import {
   Sprout,
@@ -53,16 +53,16 @@ export default function FarmerAlmanac() {
 
       setLoading(true);
 
-      const dailyRes = await axios.get(
-        "http://127.0.0.1:8000/almanac/daily"
+      const dailyRes = await api.get(
+        "/almanac/daily"
       );
 
-      const seasonalRes = await axios.get(
-        `http://127.0.0.1:8000/almanac/seasonal/${region}`
+      const seasonalRes = await api.get(
+        `/almanac/seasonal/${region}`
       );
 
-      const cropRes = await axios.get(
-        `http://127.0.0.1:8000/almanac/crop-ai/${selectedCrop}`
+      const cropRes = await api.get(
+        `/almanac/crop-ai/${selectedCrop}`
       );
 
       setDaily(dailyRes.data);
