@@ -10,7 +10,7 @@ import {
 
 import { useEffect, useState } from "react";
 
-import axios from "axios";
+import api from "../services/api";
 
 export default function WeatherCard({
   city = "Delhi",
@@ -37,8 +37,8 @@ export default function WeatherCard({
 
       setLoading(true);
 
-      const response = await axios.get(
-        `http://127.0.0.1:8000/weather/${city}`
+      const response = await api.get(
+        `/weather/${city}`
       );
 
       setWeather(response.data);
