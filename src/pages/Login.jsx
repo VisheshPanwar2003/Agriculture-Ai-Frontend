@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import axios from "axios";
+import api from "../services/api";
 
 import {
   Leaf,
@@ -35,8 +35,8 @@ export default function Login() {
       setError("");
 
       const response =
-        await axios.post(
-          "http://127.0.0.1:8000/auth/login",
+        await api.post(
+          "/auth/login",
           {
             email,
             password,
