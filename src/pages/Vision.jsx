@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-import axios from "axios";
+import api from "../services/api";
 
 import {
   Upload,
@@ -82,8 +82,8 @@ export default function VisionAnalysis() {
         question
       );
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/vision/analyze",
+      const response = api.post(
+        "/vision/analyze",
         formData,
         {
           headers: {
